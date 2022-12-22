@@ -1,0 +1,581 @@
+<!DOCTYPE HTML>
+<!--
+	Story by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html xmlns="http://www.w3.org/1999/html">
+	<head>
+		<title>CS194-26 Final Project </title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<link rel="stylesheet" href="assets/css/main.css" />
+		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper" class="divided">
+
+				<!-- TIP and Style Transfer -->
+					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right invert color0">
+						<div class="content">
+							<h1>TIP and Style Transfer</h1>
+
+							<p class="major">Varun Neal Srivastava</p>
+						</div>
+
+					</section>
+
+						<!-- Part 1: TIP -->
+						<section class="spotlight style1 orient-center content-align-center image-position-center onscroll-image-fade-in color0 invert" id="first">
+							<div class="content">
+								<h2>Part 1: Tour into the Picture</h2>
+								<p> This part follows the description of the paper <a href=http://graphics.cs.cmu.edu/courses/15-463/2011_fall/Papers/TIP.pdf>Tour into the Picture by Horry et al.</a>
+								</p>
+							</div>
+							<div class="image">
+								<img src="tour/out/oxford3.jpg" alt="" />
+							</div>
+						</section>
+
+
+						<div class="banner fullscreen style1 small invert color0 onload-image-fade-in onload-content-fade-right ">
+							<div class="content">
+								<h2>Background</h2>
+								<p>In order to project a single view photograph into 3-dimensions, we approximate the picture into five planes: 
+									the ground, the ceiling, the left and right walls, and the back wall. When a picture conforms easily to these
+									assumptions, we can recover the relative location of each of these planes in order to create a 3D projection.
+								
+									The location of each of these planes on the photograph can be fully determined by the location of the back wall
+									and the location of the vanishing point——where planar lines converge. </p>
+							</div>
+							<div class="image">
+								<img src="lib/5walls.jpg" alt="Image from TIP Paper" />
+							</div>
+						</div>
+
+						<div class="banner fullscreen style1 orient-right large invert color0 onload-image-fade-in onload-content-fade-left ">
+								<div class="content">
+									<p>
+										The location of each of these planes on the photograph can be fully determined by the location of the back wall
+										and the location of the vanishing point——where planar lines converge. These can be hand-selected via
+										a user interface.
+									</p>
+								</div>
+								<div class="image">
+									<img src="lib/vanishingpoint.jpg" alt="" />
+								</div>
+							</div>
+
+						<!-- Gallery -->
+						<div class="gallery style2  medium">
+							<article>
+								<a href="tour/out/sjerome5rect.jpg" class="image">
+									<img src="tour/out/sjerome5rect.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/oxford5rect.jpg" class="image">
+									<img src="tour/out/oxford5rect.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/post5rect.jpg" class="image">
+									<img src="tour/out/post5rect.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/Shiva5rect.jpg" class="image">
+									<img src="tour/out/Shiva5rect.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/bay5rect.jpg" class="image">
+									<img src="tour/out/bay5rect.jpg" alt="" />
+								</a>
+							</article>
+
+
+							<article>
+								<a href="tour/out/doe5rect.jpg" class="image">
+									<img src="tour/out/doe5rect.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/campanile5rect.jpg" class="image">
+									<img src="tour/out/campanile5rect.jpg" alt="" />
+								</a>
+							</article>
+
+						</div>
+
+						<div class="banner fullscreen style2 small invert color0 onload-image-fade-in onload-content-fade-right ">
+							<div class="content">
+								<p>Via the geometry of the pinhole model, the relative locations of the planes could almost be fully determined.
+								The camera could be assumed to occupy a point in 3D space, say (0,1,0). The location of the image
+								screen relative to the pinhole would need to be guessed.</p>
+							</div>
+							<div class="image">
+								<img src="lib/pinhole.png" alt="" />
+							</div>
+						</div>
+
+						<div class="banner style3 small invert color0 onload-image-fade-in onload-content-fade-right ">
+							<div class="content">
+							<p>The size of the image and distance from the pinhole (e.g. focal length) are geometrically the same. They impact
+							the 3D depth of the image, and essentially must be guessed. The (x, y) offset of the image from the pinhole can be calculated
+							so that parallel lines on the image are sent to parallel lines in 3D. In reality, this calculation is over-constrained by the
+							six sets of parallel lines in the model. Rather than finding a least-squares fit, I calculated the offsets such that the
+							ground plane was properly aligned. After all 3D coordinates were recovered, I took the average of points that should
+							map to the same location to ensure that all planes were orthogonal and all parallel lines were parallel.
+							<br><br>
+							Below is a collection of results from the interior of 3D renders.</p>
+							</div>
+						</div>
+
+						<!-- sjerome -->
+						<div class="gallery style2 invert medium">
+
+							<article>
+								<a href="tour/lib/sjerome.jpg" class="image">
+									<img src="tour/lib/sjerome.jpg" alt="" />
+								</a>
+								<div class="caption">
+										<h3>original</h3>
+								</div>
+							</article>
+
+							<article>
+								<a href="tour/out/sjerome1.jpg" class="image">
+									<img src="tour/out/sjerome1.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/sjerome2.jpg" class="image">
+									<img src="tour/out/sjerome2.jpg" alt="" />
+								</a>
+							</article>
+
+
+							<article>
+								<a href="tour/out/sjerome3.jpg" class="image">
+									<img src="tour/out/sjerome3.jpg" alt="" />
+								</a>
+							</article>
+
+						</div>
+
+						<!-- Oxford -->
+						<div class="gallery style2 invert medium">
+
+							<article>
+								<a href="tour/lib/Oxford.jpg" class="image">
+									<img src="tour/lib/Oxford.jpg" alt="" />
+								</a><div class="caption">
+										<h3>original</h3>
+									</div>
+							</article>
+
+							<article>
+								<a href="tour/out/oxford1.jpg" class="image">
+									<img src="tour/out/oxford1.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/oxford3.jpg" class="image">
+									<img src="tour/out/oxford3.jpg" alt="" />
+								</a>
+							</article>
+
+
+							<article>
+								<a href="tour/out/oxford4.jpg" class="image">
+									<img src="tour/out/oxford4.jpg" alt="" />
+								</a>
+							</article>
+
+						</div>
+
+						<!-- doe -->
+						<div class="gallery style2 invert medium">
+
+							<article>
+								<a href="tour/lib/doe.jpg" class="image">
+									<img src="tour/lib/doe.jpg" alt="" />
+								</a>
+								<div class="caption">
+										<h3>original</h3>
+									</div>
+							</article>
+
+							<article>
+								<a href="tour/out/doe1.jpg" class="image">
+									<img src="tour/out/doe1.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/doe4.jpg" class="image">
+									<img src="tour/out/doe4.jpg" alt="" />
+								</a>
+							</article>
+
+
+							<article>
+								<a href="tour/out/doe5.jpg" class="image">
+									<img src="tour/out/doe5.jpg" alt="" />
+								</a>
+							</article>
+							<article>
+								<a href="tour/out/doe6.jpg" class="image">
+									<img src="tour/out/doe6.jpg" alt="" />
+								</a>
+							</article>
+
+												<article>
+								<a href="tour/out/doe8.jpg" class="image">
+									<img src="tour/out/doe8.jpg" alt="" />
+								</a>
+							</article>
+						</div>
+
+						<!-- bay -->
+						<div class="gallery style2 invert medium">
+
+							<article>
+								<a href="tour/lib/bay.jpg" class="image">
+									<img src="tour/lib/bay.jpg" alt="" />
+								</a>
+								<div class="caption">
+										<h3>original</h3>
+									</div>
+							</article>
+
+							<article>
+								<a href="tour/out/bay1.jpg" class="image">
+									<img src="tour/out/bay1.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/bay3.jpg" class="image">
+									<img src="tour/out/bay3.jpg" alt="" />
+								</a>
+							</article>
+
+						</div>
+
+						<!-- Shiva -->
+						<div class="gallery style2 invert medium">
+
+							<article>
+								<a href="tour/lib/Shiva.jpg" class="image">
+									<img src="tour/lib/Shiva.jpg" alt="" />
+								</a>
+								<div class="caption">
+										<h3>original</h3>
+									</div>
+							</article>
+
+							<article>
+								<a href="tour/out/Shiva1.jpg" class="image">
+									<img src="tour/out/Shiva1.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/Shiva2.jpg" class="image">
+									<img src="tour/out/Shiva2.jpg" alt="" />
+								</a>
+							</article>
+
+
+							<article>
+								<a href="tour/out/Shiva3.jpg" class="image">
+									<img src="tour/out/Shiva3.jpg" alt="" />
+								</a>
+							</article>
+							<article>
+								<a href="tour/out/Shiva3.jpg" class="image">
+									<img src="tour/out/Shiva3.jpg" alt="" />
+								</a>
+							</article>
+
+												<article>
+								<a href="tour/out/Shiva4.jpg" class="image">
+									<img src="tour/out/Shiva4.jpg" alt="" />
+								</a>
+							</article>
+						</div>
+
+						<!-- post -->
+						<div class="gallery style2 invert medium">
+
+							<article>
+								<a href="tour/lib/post.jpg" class="image">
+									<img src="tour/lib/post.jpg" alt="" />
+								</a>
+								<div class="caption">
+										<h3>original</h3>
+									</div>
+							</article>
+
+							<article>
+								<a href="tour/out/post1.jpg" class="image">
+									<img src="tour/out/post1.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/post2.jpg" class="image">
+									<img src="tour/out/post2.jpg" alt="" />
+								</a>
+							</article>
+
+
+							<article>
+								<a href="tour/out/post3.jpg" class="image">
+									<img src="tour/out/post3.jpg" alt="" />
+								</a>
+							</article>
+						</div>
+
+
+				<!-- Part 2: Style Transfer -->
+				<section class="spotlight style5 small orient-center content-align-center image-position-center onscroll-image-fade-in invert" id="first">
+						<div class="content">
+							<h2>Part 2: Style Transfer</h2>
+							<p> This part follows the description of the classic paper <a href=hhttps://arxiv.org/pdf/1508.06576.pdf>A Neural Algorithm of Artistic Style by Gatys et al.</a></p>
+						</div>
+						<div class="image">
+							<img src="style_transfer/out/sjerome_thewave.jpg" alt="" />
+						</div>
+
+					</section>
+
+						<div class="banner style1 orient-right content-align-right image-position-center onscroll-image-fade-in invert color0" id="first">
+							<div class="content">
+								<h2>Style Transfer Overview</h2>
+								<p>The hypothesis of style transfer neural algorithm is that CNNs embed the "style" of images in their hidden layers.
+								Therefore, if we diffuse/gradient descent on the pixels of an image in order to match the style of another image, we can
+								achieve style transfer. This turns out to be very simple to implement. I used the pre-trained SqueezeNet model for its
+								small size. It consists 13 CNN modules followed by a classifier. We derived "style" from a weighted average of the 1st, 4th,
+								6th, and 7th layers, whereas the "content" tensor was derived from the 3rd layer.
+
+								<br><br> To measure content loss, SSD was performed, whereas for style loss, the correlation between features were measured
+								via a Gram matrix. The SSD of Gram matrices was taken, rather than the SSD of the features directly. Finally, a sort of variation loss
+								was also measured, which measure the variance of pixels over the output image. This was done in order to create some smoothness across
+									the output. Naively, a weighted average of these losses was taken for each optimization step.</p>
+
+							</div>
+							<div class="image">
+								<img src="style_transfer/lib/starrynight.jpg" alt="" />
+							</div>
+						</div>
+						<section class="spotlight style1 orient-center content-align-center image-position-center onscroll-image-fade-in color0 invert" id="first">
+							<div class="content">Finding the right hyperparameters was a guessing game that took several tries.</div>
+						</section>
+
+						<!-- Gallery -->
+						<div class="gallery style2  medium">
+
+							<article>
+								<a href="style_transfer/out/attempt1.jpg" class="image">
+									<img src="style_transfer/out/attempt1.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="style_transfer/out/attempt2.jpg" class="image">
+									<img src="style_transfer/out/attempt2.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="style_transfer/out/attempt3.jpg" class="image">
+									<img src="style_transfer/out/attempt3.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="style_transfer/out/attempt4.jpg" class="image">
+									<img src="style_transfer/out/attempt5.jpg" alt="" />
+								</a>
+							</article>
+						</div>
+
+							<section class="spotlight style1 orient-center content-align-center image-position-center onscroll-image-fade-in color0 invert" id="first">
+
+									<div class="content">But after I found them, I could turn anything into Starry Night.</div>
+							</section>
+
+
+						<!-- Gallery -->
+						<div class="gallery style2 invert  medium">
+							<article>
+								<a href="style_transfer/out/Oxford_starrynight.jpg" class="image">
+									<img src="style_transfer/out/Oxford_starrynight.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="style_transfer/out/bay_starrynight.jpg" class="image">
+									<img src="style_transfer/out/bay_starrynight.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="style_transfer/out/campanile_starrynight.jpg" class="image">
+									<img src="style_transfer/out/campanile_starrynight.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="style_transfer/out/doe_starrynight.jpg" class="image">
+									<img src="style_transfer/out/doe_starrynight.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="style_transfer/out/sjerome_starrynight.jpg" class="image">
+									<img src="style_transfer/out/sjerome_starrynight.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="style_transfer/out/post_starrynight.jpg" class="image">
+									<img src="style_transfer/out/post_starrynight.jpg" alt="" />
+								</a>
+							</article>
+						</div>
+
+						<section class="spotlight style1 orient-center content-align-center image-position-center onscroll-image-fade-in color0 invert" id="first">
+									<div class="content">Of course, I turned them into The Wave as well.</div>
+											<div class="image">
+								<img src="style_transfer/lib/thewave.jpg" alt="" />
+							</div>
+						</section>
+
+
+						<!-- Gallery -->
+						<div class="gallery style2 invert  medium">
+							<article>
+								<a href="style_transfer/out/Oxford_thewave.jpg" class="image">
+									<img src="style_transfer/out/Oxford_thewave.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="style_transfer/out/bay_thewave.jpg" class="image">
+									<img src="style_transfer/out/bay_thewave.jpg" alt="" />
+								</a>
+							</article>
+
+
+							<article>
+								<a href="style_transfer/out/doe_thewave.jpg" class="image">
+									<img src="style_transfer/out/doe_thewave.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="style_transfer/out/sjerome_thewave.jpg" class="image">
+									<img src="style_transfer/out/sjerome_thewave.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="style_transfer/out/post_thewave.jpg" class="image">
+									<img src="style_transfer/out/post_thewave.jpg" alt="" />
+								</a>
+							</article>
+						</div>
+
+			<!-- Combination -->
+					<div class="spotlight style1 small invert color0 onload-image-fade-in onload-content-fade-right ">
+						<div class="content">
+							<h2>Combination</h2>
+							<p> A wise man once said <em>"I'm at the Pizza Hut. I'm at the Taco Bell. I'm at the combination
+							Pizza Hut and Taco Bell."</em> Here's the 3D render of a couple style transferred images:</p>
+
+						</div>
+					</div>
+
+
+						<!-- Gallery -->
+						<div class="gallery style2 invert  medium">
+							<article>
+								<a href="tour/out/does1.jpg" class="image">
+									<img src="tour/out/does1.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/does2.jpg" class="image">
+									<img src="tour/out/does2.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/does3.jpg" class="image">
+									<img src="tour/out/does3.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/does4.jpg" class="image">
+									<img src="tour/out/does4.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/posts1.jpg" class="image">
+									<img src="tour/out/posts1.jpg" alt="" />
+								</a>
+							</article>
+
+							<article>
+								<a href="tour/out/posts2.jpg" class="image">
+									<img src="tour/out/posts2.jpg" alt="" />
+								</a>
+							</article>
+
+						</div>
+
+
+			<!-- Conclusion -->
+					<div class="spotlight style1 small invert color0 onload-image-fade-in onload-content-fade-right ">
+						<div class="content">
+							<h2>Conclusion</h2>
+							<p> To model my 3D images I used the very-simple <a href="https://vpython.org/">vpython</a>. For my Bells and Whistles,
+							I created the python version of the pre-provided Matlab code (which I have since emailed to the relevant parties). <br><br>
+								The most enjoyable part of the final project was definitely working out all of the math regarding the pinhole camera. Reading
+								the original paper, which was rather terse, made me redo a lot of calculations by hand. Due to this, I have a much better
+								understanding of the geometry of single-view images. I also see parallel lines and vanishing points around me everywhere now.
+							</p>
+
+						</div>
+					</div>
+
+
+			</div>
+
+		<!-- Scripts -->
+			<script src="assets/js/jquery.min.js"></script>
+			<script src="assets/js/jquery.scrollex.min.js"></script>
+			<script src="assets/js/jquery.scrolly.min.js"></script>
+			<script src="assets/js/browser.min.js"></script>
+			<script src="assets/js/breakpoints.min.js"></script>
+			<script src="assets/js/util.js"></script>
+			<script src="assets/js/main.js"></script>
+
+	</body>
+</html>

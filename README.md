@@ -1,4 +1,6 @@
-# cs194-final-project
+# Tour into a Picture (cs194-final-project)
+Implementation of [Tour into a Picture](http://graphics.cs.cmu.edu/courses/15-463/2011_fall/Papers/TIP.pdf) in python.
+
 Varun Neal Srivastava
 
 3036400739

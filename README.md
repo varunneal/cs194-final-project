@@ -7,7 +7,7 @@ Varun Neal Srivastava
 
 varun.neal@berkeley.edu
 
-https://inst.eecs.berkeley.edu/~cs194-26/fa22/upload/files/projFinalAssigned/cs194-26-agh/
+https://varunneal.github.io/cs194-final-project/
 
 Project structure:
 ```
